@@ -1,17 +1,15 @@
 package cz.ss;
 
+import java.math.BigDecimal;
+
 public class PermMissingElement {
 	public int findMissingElement(int[] elements, int elementsLength) {
-		if (elementsLength == 0){
-			throw new NoMissingElementException();
-		}
-
 		int possibleSumOfAllElements = (elementsLength + 2) * (elementsLength + 1) / 2;
-		int result = possibleSumOfAllElements;
+		BigDecimal result = new BigDecimal(possibleSumOfAllElements);
 		for(int i = 0; i < elementsLength; i++){
-			result -= elements[i];
+			result = result.subtract(BigDecimal.valueOf(elements[i]));
 		}
 
-		return result;
+		return result.intValue();
 	}
 }

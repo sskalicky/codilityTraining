@@ -32,15 +32,16 @@ public class PermMissingElementTest {
 
 	@Test
 	public void findMissingElementInArrayOfHighAmountOfElements(){
-		givenElementsArrayOfElementCount(100000);
+		givenElementsArrayOfElementCountAndElementValue1Missing(100000);
 		whenSearchingForMissingElement();
-		thenTheResultShouldBe(100001);
+		thenTheResultShouldBe(1);
 	}
 
-	@Test (expected = NoMissingElementException.class)
+	@Test
 	public void findMissingElementInArrayOf0Elements(){
 		givenElementsArrayOfValue(new int[] {});
 		whenSearchingForMissingElement();
+		thenTheResultShouldBe(1);
 	}
 
 	private void givenElementsArrayOfValue(int[] elements) {
@@ -51,8 +52,8 @@ public class PermMissingElementTest {
 	 * fills this.elmement array with values  1 ... elementsCount
 	 * @param elementsCount
 	 */
-	private void givenElementsArrayOfElementCount(int elementsCount) {
-		int actualElementValue = 1;
+	private void givenElementsArrayOfElementCountAndElementValue1Missing(int elementsCount) {
+		int actualElementValue = 2;
 		this.elements = new int[elementsCount];
 
 		for(int i = 0; i < this.elements.length; i++){
